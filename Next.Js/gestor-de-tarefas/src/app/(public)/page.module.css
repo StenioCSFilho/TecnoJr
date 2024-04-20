@@ -1,0 +1,42 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 5px;
+    gap: 15px;
+    background-color: var(--secondary-color);
+}
+
+.loginHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.input {
+    padding: 10px;
+    color: #fff;
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+}

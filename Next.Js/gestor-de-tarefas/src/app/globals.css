@@ -1,0 +1,28 @@
+:root {
+  --primary-color: #2C2C54;
+  --secondary-color: #474787;
+  --tertiary-color: #AAABBB;
+  --quartenary-color: #ECECEC;
+ }
+ 
+ * {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+ }
+ 
+ html,
+ body {
+   max-width: 100vw;
+   overflow-x: hidden;
+ }
+ 
+ body {
+   background-color: var(--primary-color);
+   color: #FFF;
+ }
+ 
+ a {
+   color: inherit;
+   text-decoration: none;
+ }
