@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import Styles from "./page.module.css"
 
 import Button from "@/components/Button"
@@ -20,6 +20,7 @@ type PriorityType = 'low' | 'medium' | 'high' | 'finished' | null;
 
 export default function Tasks() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [idCounter, setIdCounter] = useState(0)
     const [tasks, setTasks] = useState([] as Task[])
     const [newTask, setNewTask] = useState({
         title: '',
@@ -27,6 +28,28 @@ export default function Tasks() {
         priority: null,
         deadline: null,
     } as Task);
+
+    function handleAddNewTask(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setNewTask({
+            ...newTask,
+            id: idCounter
+        })
+        setTasks([...tasks, newTask])
+        setIdCounter(idCounter + 1)
+        setNewTask({
+            id: idCounter,
+            title: '',
+            description: '',
+            priority: null,
+            deadline: null,
+        })
+        setModalIsOpen(false)
+    }
+
+    function handleDeleteTask(id: number) {
+        setTasks(tasks.filter((task) => task.id !== id))
+    }
 
     return (
         <>
@@ -44,7 +67,10 @@ export default function Tasks() {
                             </Button>
                         </header>
 
-                        <form className={Styles.form}>
+                        <form
+                            onSubmit={(e) => handleAddNewTask(e)}
+                            className={Styles.form}
+                        >
                             <input
                                 type="text"
                                 placeholder="Título"
@@ -131,6 +157,20 @@ export default function Tasks() {
                         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet magna dui. Morbi vulputate blandit tellus, sed pellentesque justo gravida accumsan. Quisque auctor consequat turpis, nec condimentum sem tempus vel. Mauris vitae dignissim dolor. Phasellus vitae est dui. Praesent nec leo lobortis, imperdiet lacus at, rutrum risus. Maecenas ut urna at dolor sollicitudin sodales."
                         priority='low'
                     />
+
+                    {tasks.map((task) => {
+                        return (
+                            <Task
+                                key={task.id}
+                                title={task.title}
+                                description={task.description}
+                                {...task.priority && { priority: task.priority }}
+                                {...task.deadline && { deadline: task.deadline }}
+                                onDelete={() => handleDeleteTask(task.id)}
+                            />
+                        )
+                    })}
+
                 </main>
             </div>
         </>
