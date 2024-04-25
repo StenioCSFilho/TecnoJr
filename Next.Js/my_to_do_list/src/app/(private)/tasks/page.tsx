@@ -12,11 +12,11 @@ interface Task {
     id: number;
     title: string;
     description: string;
-    priority?: 'low' | 'medium' | 'high' | 'finished' | null;
+    priority?: 'going' | 'low' | 'medium' | 'high' | 'finished' | null;
     deadline?: Date | null;
 }
 
-type PriorityType = 'low' | 'medium' | 'high' | 'finished' | null;
+type PriorityType = 'going' | 'low' | 'medium' | 'high' | 'finished' | null;
 
 export default function Tasks() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -25,7 +25,7 @@ export default function Tasks() {
     const [newTask, setNewTask] = useState({
         title: '',
         description: '',
-        priority: null,
+        priority: 'going',
         deadline: null,
     } as Task);
 
@@ -41,7 +41,7 @@ export default function Tasks() {
             id: idCounter,
             title: '',
             description: '',
-            priority: null,
+            priority: 'going',
             deadline: null,
         })
         setModalIsOpen(false)
@@ -56,31 +56,37 @@ export default function Tasks() {
             {modalIsOpen && (
                 <div className={Styles.modal}>
                     <div className={Styles.modalContent}>
-                        <header>
-                            <h2>Nova Tarefa</h2>
-                            <Button
-                                size="sm"
-                                variant="primary"
-                                onClick={() => setModalIsOpen(false)}
-                            >
-                                X
-                            </Button>
-                        </header>
 
                         <form
                             onSubmit={(e) => handleAddNewTask(e)}
                             className={Styles.form}
                         >
-                            <input
-                                type="text"
-                                placeholder="Título"
-                                onChange={(e) => setNewTask({
-                                    ...newTask,
-                                    title: e.target.value
-                                })}
-                            />
 
-                            <div>
+                            <div className={Styles.modalHeader}>
+                                <input
+                                    type="text"
+                                    placeholder="Título"
+                                    onChange={(e) => setNewTask({
+                                        ...newTask,
+                                        title: e.target.value
+                                    })}
+                                />
+
+                                <Button
+                                    size="sm"
+                                    variant="primary"
+                                    onClick={() => setModalIsOpen(false)}
+                                >
+                                    X
+                                </Button>
+                            </div>
+
+                            <div className={Styles.modalContainerLine}>
+                                <p className={Styles.modalLineH}></p>
+                            </div>
+
+                            <div className={Styles.modalSelect}>
+
                                 <select
                                     value={newTask.priority || "no"}
                                     onChange={(e) =>
@@ -92,7 +98,9 @@ export default function Tasks() {
                                         })
                                     }
                                 >
-                                    <option value="no">Sem Prioridade</option>
+                                    <option value="no">
+                                        <Priority type="going" />
+                                    </option>
                                     <option value="low">
                                         <Priority type="low" />
                                     </option>
@@ -106,6 +114,7 @@ export default function Tasks() {
 
                                 <input
                                     type="date"
+                                    className={Styles.inputDate}
                                     onChange={(e) =>
                                         setNewTask({
                                             ...newTask,
@@ -124,13 +133,14 @@ export default function Tasks() {
                                     })
                                 }
                             />
-
-                            <Button
-                                size="lg"
-                                variant="primary"
-                            >
-                                Adicionar
-                            </Button>
+                            <div className={Styles.modalButton}>
+                                <Button
+                                    size="lg"
+                                    variant="primary"
+                                >
+                                    Adicionar
+                                </Button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -162,12 +172,6 @@ export default function Tasks() {
                     </div>
 
                     <main className={Styles.main}>
-                        <Task
-                            title="Título 01"
-                            deadline={new Date()}
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet magna dui. Morbi vulputate blandit tellus, sed pellentesque justo gravida accumsan. Quisque auctor consequat turpis, nec condimentum sem tempus vel. Mauris vitae dignissim dolor. Phasellus vitae est dui. Praesent nec leo lobortis, imperdiet lacus at, rutrum risus. Maecenas ut urna at dolor sollicitudin sodales."
-                            priority='low'
-                        />
 
                         {tasks.map((task) => {
                             return (

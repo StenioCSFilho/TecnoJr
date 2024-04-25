@@ -1,23 +1,25 @@
 import styles from './page.module.css'
 
 interface PriorityProps {
-    type: 'low' | 'medium' | 'high' | 'finished';
+    type: 'going' | 'low' | 'medium' | 'high' | 'finished';
 }
 
 export default function Priority({ type }: PriorityProps) {
 
     function getPriorityText() {
         switch (type) {
+            case 'going':
+                return '▶️ Em Andamento';
             case 'low':
-                return '🟢 Baixa Prioridade';
+                return '▶️ Baixa Prioridade';
             case 'medium':
-                return '🟡 Média Prioridade';
+                return '▶️ Média Prioridade';
             case 'high':
-                return '🔴 Alta Prioridade';
+                return '⚠️ Alta Prioridade';
             case 'finished':
-                return '✅ Concluída';
+                return '✅ Concluído';
             default:
-                return '🟢 Baixa Prioridade';
+                return '▶️ Em Andamento';
         }
     }
 

@@ -6,7 +6,7 @@ import { useState } from "react";
 interface TaskProps {
     title: string;
     description?: string;
-    priority?: 'low' | 'medium' | 'high' | 'finished' | null;
+    priority?: 'going' | 'low' | 'medium' | 'high' | 'finished' | null;
     deadline?: Date;
     onDelete?: () => void;
 }

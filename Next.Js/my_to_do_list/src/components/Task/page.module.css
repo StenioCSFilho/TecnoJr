@@ -6,6 +6,7 @@
     padding: 20px;
     border-radius: 60px;
     background-color: var(--quinary-color);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
 .taskContainer header {
@@ -45,15 +46,20 @@
 }
 
 .lineTitle {
+    max-width: 1000px;
     height: 100%;
+    max-height: 50px;
     border-left: 1px solid black;
     padding-left: 10px;
+    overflow: hidden;
 }
 
 .taskInfo {
     width: 300px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
 }
 
 .description {
@@ -64,7 +70,7 @@
     padding-right: 200px;
 }
 
-.finished header,
+.finished h3,
 .finished .description {
     text-decoration: line-through;
     color: var(--tertiary-color);
