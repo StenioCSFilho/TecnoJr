@@ -81,7 +81,7 @@ export default function Tasks() {
                                 </Button>
                             </div>
 
-                            <div className={Styles.modalContainerLine}>
+                            <div>
                                 <p className={Styles.modalLineH}></p>
                             </div>
 
