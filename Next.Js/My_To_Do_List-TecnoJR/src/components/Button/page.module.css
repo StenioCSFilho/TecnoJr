@@ -1,0 +1,59 @@
+.button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    font-size: inherit;
+    transition: .3s;
+    font-family: inherit;
+}
+
+
+.sm {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 60px;
+}
+
+
+.lg {
+    margin-top: 10px;
+    border-radius: 60px;
+    width: 70%;
+    height: 75px;
+    padding: .5rem 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+
+.md {
+    padding: .4rem 1.2rem;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 60px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+
+.primary {
+    color: var(--quinary-color);
+    background-color: var(--quartenary-color);
+}
+
+.primary:hover {
+    opacity: .8;
+}
+
+.secondary {
+    background-color: var(--quartenary-color);
+    color: var(--quinary-color);
+}
+
+.secondary:hover {
+    opacity: .8;
+}

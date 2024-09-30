@@ -1,0 +1,77 @@
+.taskContainer {
+    width: 90%;
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 60px;
+    background-color: var(--quinary-color);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+.taskContainer header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.options input[type="checkbox"] {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.options button {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.3rem;
+    color: black;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.lineTitle {
+    max-width: 1000px;
+    height: 100%;
+    max-height: 50px;
+    border-left: 1px solid black;
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+.taskInfo {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.description {
+    font-size: 16px;
+    text-wrap: wrap;
+    overflow: hidden;
+    padding-left: 40px;
+    padding-right: 200px;
+}
+
+.finished h3,
+.finished .description {
+    text-decoration: line-through;
+    color: var(--tertiary-color);
+}

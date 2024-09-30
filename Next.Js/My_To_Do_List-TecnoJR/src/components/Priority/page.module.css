@@ -1,0 +1,10 @@
+.going,
+.low,
+.medium,
+.high,
+.finished {
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 2px;
+    background-color: var(--quartenary-color);
+}
